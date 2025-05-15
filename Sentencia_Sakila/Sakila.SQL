@@ -22,8 +22,24 @@ INNER JOIN city c ON ad.city_id = c.city_id
 INNER JOIN country co ON c.country_id = co.country_id
 
 --4)
+SELECT f.title, MIN(re.rental_date), MAX(re.return_date) FROM film f
+INNER JOIN inventory inv ON f.film_id = inv.film_id
+INNER join rental re ON inv.inventory_id = re.inventory_id
 
+--5)
 
 --6)
 SELECT count(*), rating from film
 group by rating
+
+--17)
+SELECT cus.last_name, c.city, co.country, ad.address, pay.amount, re.rental_date from customer cus
+INNER JOIN address ad ON cus.address_id = ad.address_id
+INNER JOIN city c ON ad.city_id = c.city_id
+INNER JOIN country co ON c.country_id = co.country_id
+INNER JOIN rental re ON cus.customer_id = re.customer_id
+INNER JOIN payment pay ON re.customer_id = pay.customer_id
+GROUP BY cus.last_name
+ORDER BY  pay.amount ASC
+
+--18)
