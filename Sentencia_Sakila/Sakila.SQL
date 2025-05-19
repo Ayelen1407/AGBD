@@ -32,6 +32,34 @@ INNER join rental re ON inv.inventory_id = re.inventory_id
 SELECT count(*), rating from film
 group by rating
 
+--7)
+SELECT COUNT(*),ca.name FROM film f
+INNER JOIN film_category fc ON f.film_id = fc.film_id
+INNER JOIN category ca ON fc.category_id = ca.category_id GROUP BY ca.category_id
+
+--8)
+SELECT COUNT(*) AS actorxpeli, ac.first_name, ac.last_name FROM film f
+INNER JOIN film_actor fm ON f.film_id = fm.film_id
+INNER JOIN actor ac ON fm.actor_id = ac.actor_id
+GROUP BY f.film_id ORDER BY actorxpeli DESC LIMIT 10
+
+--9)
+SELECT COUNT(inv.film_id), ad.address, c.city, co.country FROM inventory inv
+INNER JOIN store st ON inv.store_id = st.store_id
+INNER JOIN address ad ON st.address_id = ad.address_id
+INNER JOIN city c ON ad.city_id = c.city_id
+INNER JOIN country co ON c.country_id = co.country_id
+GROUP BY st.store_id
+
+--10)
+SELECT COUNT(inv.film_id) AS pelis_cadaLocal, ad.address, c.city, co.country FROM film f
+INNER JOIN inventory inv ON f.film_id = inv.film_id
+INNER JOIN store st ON inv.store_id = st.store_id
+INNER JOIN address ad ON st.address_id = ad.address_id
+INNER JOIN city c ON ad.city_id = c.city_id
+INNER JOIN country co ON c.country_id = co.country_id
+GROUP BY st.store_id --falta terminar
+
 --17)
 SELECT cus.last_name, c.city, co.country, ad.address, pay.amount, re.rental_date from customer cus
 INNER JOIN address ad ON cus.address_id = ad.address_id
