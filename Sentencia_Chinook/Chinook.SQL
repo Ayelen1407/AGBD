@@ -6,7 +6,7 @@ SELECT Title, Milliseconds FROM albums al INNER JOIN tracks tr ON al.AlbumId = t
 WHERE tr.AlbumId = 5 ORDER BY Milliseconds DESC
 
 --3) Nombre de todos los géneros con la cantidad de canciones de cada uno
-SELECT g.name, COUNT(g.GenreId) FROM genres g INNER JOIN tracks t ON g.GenreId = t.GenreId GROUP BY g.GenreId
+SELECT g.name, COUNT(t.TrackId) AS cant_canciones FROM genres g INNER JOIN tracks t ON g.GenreId = t.GenreId GROUP BY g.GenreId
 
 --4) Nombre de los discos con al menos 5 canciones
 SELECT al.title, count(t.TrackId) AS canciones_x_disco FROM tracks t 
