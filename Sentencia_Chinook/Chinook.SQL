@@ -41,6 +41,7 @@ SELECT e.LastName as Apellido_Jefe, e.Title as Puesto, jef.LastName AS Apellido_
 INNER JOIN employees jef ON e.EmployeeId = jef.ReportsTo
 INNER JOIN customers cu ON jef.EmployeeId = cu.SupportRepId
 GROUP BY jef.EmployeeId
+ORDER BY clientes_x_empleado DESC
 
 --9) Insertar cuatro (4) canciones que les gusten
 INSERT INTO tracks (name, MediaTypeId, Milliseconds, UnitPrice) VALUES
