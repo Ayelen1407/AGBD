@@ -50,15 +50,24 @@ INSERT INTO tracks (name, MediaTypeId, Milliseconds, UnitPrice) VALUES
 ("Sky", "1", "347566", "0.80")
 
 --10) Mostrar las cuatro canciones ingresadas
-SELECT * FROM tracks
-WHERE TrackId >= 3504
+SELECT * FROM tracks t --> Otra manera
+ORDER BY t.TrackId DESC
+LIMIT 4
+
+/*SELECT * FROM tracks
+WHERE TrackId >= 3504*/
 
 --11) Modifiquen dos (2) canciones por otras que se les ocurran
 UPDATE tracks SET name = "Rock" WHERE name = "Dream";
 UPDATE tracks SET name = "Life" WHERE name = "Sky"
 
 --12) Mostrar las dos (2) canciones modificadas
-SELECT * FROM tracks
-WHERE TrackId >= 3506
+SELECT * FROM tracks t
+ORDER BY t.TrackId DESC
+LIMIT 2
+
+/*SELECT * FROM tracks --> Otra manera
+WHERE TrackId >= 3506*/
 
 --13) Borrar dos (2) datos ingresados, realizando un solo delete
+DELETE FROM tracks WHERE TrackId in (3506, 3507)
