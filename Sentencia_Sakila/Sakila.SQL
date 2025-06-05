@@ -121,4 +121,9 @@ INSERT INTO actor (actor_id, first_name, last_name, last_update) VALUES
 ("203", "Rocio", "Albarracin", "2008-07-03 01:23:29")
 
 --20)Modificar los 3 datos ingresados por datos nuevos o de gente famosa.
-UPDATE actor SET first_name = "Evelyn"; --> falta terminar
+UPDATE actor SET first_name = "Evelyn", last_name = "Villareal" WHERE actor_id = 201;
+UPDATE actor SET first_name = "Valentina", last_name = "Obeso" WHERE actor_id = 202;
+UPDATE actor SET first_name = "Abril", last_name = "Herbas" WHERE actor_id = 203
+ 
+--21)Borrar todos los datos ingresados finalmente
+DELETE FROM actor WHERE actor_id > 200
