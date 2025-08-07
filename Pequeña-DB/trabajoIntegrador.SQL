@@ -20,11 +20,11 @@ CREATE TABLE "clientes" (
 	"id_empleado"	INTEGER NOT NULL,
 
 	PRIMARY KEY("id_cliente" AUTOINCREMENT),
-    FOREIGN KEY("id_genero") REFERENCES genero("id_genero"), -- para establecer la union entre tablas
+    FOREIGN KEY("id_genero") REFERENCES genero("id_genero"),
 	FOREIGN KEY("id_empleado") REFERENCES empleados ("id_empleado"),
 	FOREIGN KEY("id_shoes") REFERENCES shoes ("id_shoes"),
 	FOREIGN KEY("id_metodo") REFERENCES opcionesPagos ("id_metodo")
-    --primero ponemos la columna en la que estamos parados y despues la columna de la otra tabla
+   
 );
 
 CREATE TABLE "empleados" (
@@ -46,13 +46,6 @@ CREATE TABLE "shoes" (
 	PRIMARY KEY("id_shoes" AUTOINCREMENT),
 	FOREIGN KEY("id_ubicacion") REFERENCES ubicacionLocal ("id_ubicacion")
 );
----
-CREATE TABLE "ubicacionLocal" ( -- No se utilizará para el trabajo integral
-    "id_ubicacion"  INTEGER,
-    "ubicacion" VARCHAR (40) NOT NULL,
-    PRIMARY KEY("id_ubicacion" AUTOINCREMENT)
-);
----
 
 CREATE TABLE "metodoDePago" (
     "id_metodo" INTEGER,
