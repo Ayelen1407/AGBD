@@ -12,7 +12,6 @@ CREATE TABLE "clientes" (
     "id_genero" INTEGER NOT NULL,
 	"id_shoes"	INTEGER NOT NULL,
 	"gasto"		VARCHAR(10) NOT NULL,
-	"id_metodo"	INTEGER NOT NULL,
 	"direccion"	VARCHAR(40) NOT NULL,
 	"email"		VARCHAR(45) NOT NULL UNIQUE,
 	"numero"	VARCHAR(10) NOT NULL UNIQUE,
@@ -42,11 +41,37 @@ CREATE TABLE "shoes" (
 	"marca"  	VARCHAR(15) NOT NULL,
 	"talles"	VARCHAR(5) NOT NULL,
 	"precios"	VARCHAR(15) NOT NULL,
-	"id_ubicacion"	INTEGER NOT NULL,
+	"id_Ctalles" INTEGER NOT NULL,
 	PRIMARY KEY("id_shoes" AUTOINCREMENT),
-	FOREIGN KEY("id_ubicacion") REFERENCES ubicacionLocal ("id_ubicacion")
+	FOREIGN KEY("id_Ctalles") REFERENCES cantidadTallestalles ("id_Ctalles")
+
 );
 
+CREATE TABLE "talles" (
+	"id_talles"	INTEGER NOT NULL,
+	"id_Ctalles"	INTEGER NOT NULL,
+	PRIMARY KEY("id_talles" AUTOINCREMENT),
+	FOREIGN KEY("id_Ctalles") REFERENCES cantidadTalles ("id_Ctalles")
+);
+------------
+CREATE TABLE "cantidadTalles" (
+	"id_Ctalles"	INTEGER NOT NULL,
+	"talles"	INTEGER NOT NULL,
+	PRIMARY KEY("id_Ctalles" AUTOINCREMENT)
+);
+INSERT INTO cantidadTalles (talles) VALUES 
+(34),
+(35),
+(36),
+(37),
+(38),
+(39),
+(40),
+(41),
+(42),
+(43),
+(44)
+------------
 CREATE TABLE "metodoDePago" (
     "id_metodo" INTEGER,
     "metodo"    VARCHAR (20) NOT NULL,
